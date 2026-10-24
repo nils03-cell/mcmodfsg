@@ -35,6 +35,7 @@ public final class LyricsHud {
     }
 
     public static void render(DrawContext ctx, RenderTickCounter tickCounter) {
+        FxHud.render(ctx);
         Config c = Config.get();
         if (!c.enabled) return;
 

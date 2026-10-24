@@ -88,6 +88,16 @@ public class LyricsMod implements ClientModInitializer {
                             Config.get().normalColor = StringArgumentType.getString(c, "hex"); Config.save();
                             return reply(c, "Farbe andere Zeilen: " + Config.get().normalColor); }))));
 
+            root.then(ClientCommandManager.literal("fx")
+                    .then(ClientCommandManager.literal("on").executes(c -> {
+                        Config.get().fxEnabled = true; Config.save(); return reply(c, "Effekte an."); }))
+                    .then(ClientCommandManager.literal("off").executes(c -> {
+                        Config.get().fxEnabled = false; Config.save(); return reply(c, "Effekte aus."); }))
+                    .then(ClientCommandManager.literal("rate")
+                        .then(ClientCommandManager.argument("v", IntegerArgumentType.integer(1, 10)).executes(c -> {
+                            Config.get().fxRate = IntegerArgumentType.getInteger(c, "v"); Config.save();
+                            return reply(c, "Effekt-Haeufigkeit: " + Config.get().fxRate + " (1 selten, 10 oft)"); }))));
+
             dispatcher.register(root);
         });
     }

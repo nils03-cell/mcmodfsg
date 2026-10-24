@@ -24,6 +24,8 @@ public class Config {
     public boolean shadow = true;
     public int syncOffsetMs = 0;
     public float animationSpeed = 9.0f;
+    public boolean fxEnabled = true;
+    public int fxRate = 5;
 
     public static Config get() {
         return instance;
